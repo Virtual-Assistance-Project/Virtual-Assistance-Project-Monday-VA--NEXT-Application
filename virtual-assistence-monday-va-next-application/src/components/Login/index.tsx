@@ -1,57 +1,63 @@
-import { Container } from "./style"
-import MondayIcon from "../../public/Icon/MondayIcon.svg"
+import { AppName, AppSubTitle, Container, ErroMessage, FormLogin, InputField, LoginButton, LoginContainer, LogoLogin, RegisterLink } from "./style"
+import MondayIcon from "./assets/MondayIcon.svg"
 import { useForm } from 'react-hook-form';
 import { ILoginUser } from "../../interfaces";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from "../../validators/loginUser";
 
-const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ILoginUser>({ resolver: yupResolver(schema) });
-
-
 export const Component = () => {
-    return <Container>
-        <main>
-            <img src={MondayIcon} alt="Logo" />
-            <div>
-                <h1>
-                    Monday
-                </h1>
-                <h2>
-                    Conecte e controle sua vida <br/>com seu mobile
-                </h2>
-                <div>
-                    <form onSubmit={handleSubmit(()=>console.log("Função de envio para api aqui."))}>
-                        
-                        <input 
-                            placeholder="Usuário..." 
-                            type='text' 
-                            id='username' 
-                            {...register('username')} 
-                        />
-                        <p>{errors.username?.message}</p>
 
-                        <input 
-                            placeholder="Senha..." 
-                            type='password' 
-                            id='password' 
-                            {...register('password')} 
-                        />
-                        <p>{errors.password?.message}</p>
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm<ILoginUser>({ resolver: yupResolver(schema) });
 
-                        <button>
-                            Entrar
-                        </button>
+    return (
+        <Container>
+            <LogoLogin 
+                src={MondayIcon.src} 
+                alt="Logo" 
+            />
+            <LoginContainer>
+                <AppName>
+                    Monday VA
+                </AppName>
+                <AppSubTitle>
+                    Conecte e controle sua vida com seu mobile
+                </AppSubTitle>
+                <FormLogin 
+                    onSubmit={
+                        handleSubmit(
+                        ()=>console.log("Função de envio para api aqui.")
+                )}>
+                    <InputField 
+                        placeholder="Usuário..." 
+                        type='text' 
+                        id='username' 
+                        {...register('username')} 
+                    />
+                    <ErroMessage>
+                        {errors.username?.message}
+                    </ErroMessage>
+                    <InputField 
+                        placeholder="Senha..." 
+                        type='password' 
+                        id='password' 
+                        {...register('password')} 
+                    />
+                    <ErroMessage>
+                        {errors.password?.message}
+                    </ErroMessage>
+                    <LoginButton type='submit'>
+                        Entrar
+                    </LoginButton>
 
-                    </form>
-                    <a href="/register">
-                        Cadastre-se aqui...
-                    </a>
-                </div>
-            </div>
-        </main>
-    </Container>
+                </FormLogin>    
+                <RegisterLink href="/register">
+                    Cadastre-se aqui...
+                </RegisterLink>
+            </LoginContainer>
+        </Container>
+    )
 }
