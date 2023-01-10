@@ -7,3 +7,11 @@ export interface ILoginUser {
     username:string
     password:string
 }
+
+export interface INotifications {
+    id: string;
+    title: string;
+    description: string;
+    category: string;
+
+}
