@@ -13,8 +13,8 @@ export const Container = styled.div`
 
     margin-top: 30px;
 
-    a {
-        color: #ffffff;
-    }
+    
+    color: #ffffff;
+    
 
 `

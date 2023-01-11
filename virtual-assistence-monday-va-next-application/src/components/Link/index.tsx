@@ -4,10 +4,10 @@ import { Container } from "./style"
 
 export  const Button = (props:ILink) => {
     return (
-        <Container>
-            <Link href={props.link}>
+        <Link href={props.link}>
+            <Container>
                 {props.content}
-            </Link>
-        </Container>
+            </Container>
+        </Link>
     )
 }
