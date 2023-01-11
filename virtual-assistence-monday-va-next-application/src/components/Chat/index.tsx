@@ -1,4 +1,5 @@
 import React from "react";
+import { BotMessages, ButtonNext, ChatFormContainer, ChatQuestionsContainer, FullScreen, InputAnswer, TitleRegister } from "../Register/style";
 
 export const ChatComponent = ({questions}:any) => {
 
@@ -13,31 +14,44 @@ export const ChatComponent = ({questions}:any) => {
     const handleSubmit = (event:any) => {
         event.preventDefault();
         setStep(step + 1);
+        event.target.value = "";
     };
     
     const renderStep = () => {
         const currentQuestion = questions[step];
+        console.log(formData)
         return (
-        <div>
-            <p>{currentQuestion.question}</p>
-            <input
-            type={currentQuestion.inputType}
-            name={currentQuestion.id}
-            onChange={handleChange}
-            />
-            <button type="submit">Next</button>
-        </div>
+            <ChatQuestionsContainer>
+                <BotMessages>
+                    {currentQuestion.question}
+                </BotMessages>
+                <InputAnswer
+                type={currentQuestion.inputType}
+                name={currentQuestion.id}
+                onChange={handleChange}
+                />
+                <ButtonNext type="submit">Next</ButtonNext>
+            </ChatQuestionsContainer>
         );
     };
     
     return (
-        <form onSubmit={handleSubmit}>
-            {
+        <>
+            <ChatFormContainer onSubmit={handleSubmit}>
+            <TitleRegister>
+                Cadastro
+            </TitleRegister>
+                <FullScreen>
+                {
                 step < questions.length ? 
                     renderStep() 
                     : 
-                    <p>Obrigado por se registrar!</p>
-            }
-        </form>
+                    <BotMessages>
+                        Obrigado por se registrar!
+                    </BotMessages>
+                }
+                </FullScreen>
+            </ChatFormContainer>
+        </>
     );
 }
