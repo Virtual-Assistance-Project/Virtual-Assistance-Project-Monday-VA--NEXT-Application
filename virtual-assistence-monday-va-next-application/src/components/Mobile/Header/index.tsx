@@ -14,7 +14,7 @@ export const HeaderMobile = () => {
                 <Image src={Plus} alt='User'/>
             </Link>
         </div>
-        <h1>Unknown User</h1>
-        <span>unknown@email.com</span>
+        <h1>User</h1>
+        <span>user@email.com</span>
     </Container>
 }

@@ -1,5 +1,3 @@
-import { notifications } from "../../../database"
-import { INotifications } from "../../../interfaces"
 import { Container } from "./style"
 
 
@@ -15,10 +13,10 @@ export const CalenderMobile = () => {
                     print(item:INotifications)
               })
             } */}
-            <li>17</li>
-            <li>19</li>
-            <li>20</li>
-            <li>21</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
         </ul>
     </Container>
 }

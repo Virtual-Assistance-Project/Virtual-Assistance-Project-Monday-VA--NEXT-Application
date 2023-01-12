@@ -33,9 +33,9 @@ export const LogoLogin = styled.img`
     height: 100px;
     top: 20%;
     @media (min-width: 390px) {
-        top: 10%;
-        width: 200px;
-        height: 200px;
+        top: 5%;
+        width: 150px;
+        height: 150px;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
 ` 
