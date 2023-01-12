@@ -1,17 +1,15 @@
-import { AppName, AppSubTitle, Container, ErroMessage, FormLogin, InputField, LoginButton, LoginContainer, LogoLogin, RegisterLink } from "./style"
+import { AppName, AppSubTitle, Container, FormLogin, InputField, LoginButton, LoginContainer, LogoLogin, RegisterLink } from "./style"
 import MondayIcon from "./assets/MondayIcon.svg"
 import { useForm } from 'react-hook-form';
 import { ILoginUser } from "../../interfaces";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from "../../validators/loginUser";
+import React from "react";
 
 export const Component = () => {
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
-      } = useForm<ILoginUser>({ resolver: yupResolver(schema) });
+      } = useForm<ILoginUser>();
 
     return (
         <Container>
@@ -37,18 +35,12 @@ export const Component = () => {
                         id='username' 
                         {...register('username')} 
                     />
-                    <ErroMessage>
-                        {errors.username?.message}
-                    </ErroMessage>
                     <InputField 
                         placeholder="Senha..." 
                         type='password' 
                         id='password' 
                         {...register('password')} 
                     />
-                    <ErroMessage>
-                        {errors.password?.message}
-                    </ErroMessage>
                     <LoginButton type='submit'>
                         Entrar
                     </LoginButton>
