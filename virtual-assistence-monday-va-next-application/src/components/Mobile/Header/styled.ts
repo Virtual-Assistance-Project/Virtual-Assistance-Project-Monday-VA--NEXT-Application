@@ -2,10 +2,11 @@ import styled from "styled-components"
 
 export const Container = styled.header`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
+       
 
-    width: 100%;
+    width: 50%;
 
     .over-header {
         display: flex;

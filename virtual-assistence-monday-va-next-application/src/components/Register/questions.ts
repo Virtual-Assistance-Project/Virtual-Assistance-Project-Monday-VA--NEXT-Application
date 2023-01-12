@@ -1,22 +1,32 @@
 
 const questions = [
     {
-        id: "1",
-        question: "Olá qual é o seu nome?",
+        id: "first_name",
+        question: "Olá qual é o seu primeiro nome?",
         inputType: "text",
     },
     {
-        id: "2",
+        id: "last_name",
+        question: "Qual é o seu ultimo nome?",
+        inputType: "text",
+    },
+    {
+        id: "username",
+        question: "Escreva um nick para acessar sua conta...",
+        inputType: "text",
+    },
+    {
+        id: "email",
         question: "Me informe seu email...",
         inputType: "email",
     },
     {
-        id: "3",
-        question: "repita seu e-mail...",
-        inputType: "email",
+        id: "password",
+        question: "Me informe uma senha para acessar a Monday VA...",
+        inputType: "password",
     },
     {
-        id: "4",
+        id: "birthdate",
         question: "Qual sua data de nascimento?",
         inputType: "date",
     },

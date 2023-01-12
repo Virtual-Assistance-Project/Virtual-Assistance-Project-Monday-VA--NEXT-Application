@@ -1,10 +1,13 @@
-import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { BotMessages, ButtonNext, ChatFormContainer, ChatQuestionsContainer, FullScreen, InputAnswer, TitleRegister } from "../Register/style";
 
 export const ChatComponent = ({questions}:any) => {
 
     const [step, setStep] = React.useState(0);
     const [formData, setFormData] = React.useState({});
+    const router = useRouter();
 
     const handleChange = (event:any) => {
     setFormData(
@@ -16,6 +19,14 @@ export const ChatComponent = ({questions}:any) => {
         setStep(step + 1);
         event.target.value = "";
     };
+
+    useEffect(() => {
+        if (step === questions.length) {
+            setTimeout(() => {
+                router.push("/dashboard");
+            }, 1000);
+        }
+    }, [step, questions.length]);
     
     const renderStep = () => {
         const currentQuestion = questions[step];
@@ -39,16 +50,18 @@ export const ChatComponent = ({questions}:any) => {
         <>
             <ChatFormContainer onSubmit={handleSubmit}>
             <TitleRegister>
-                Cadastro
+                Monday VA
             </TitleRegister>
                 <FullScreen>
                 {
                 step < questions.length ? 
                     renderStep() 
                     : 
-                    <BotMessages>
-                        Obrigado por se registrar!
-                    </BotMessages>
+                    <ChatQuestionsContainer>
+                        <BotMessages>
+                            processando...
+                        </BotMessages>
+                    </ChatQuestionsContainer>
                 }
                 </FullScreen>
             </ChatFormContainer>
